@@ -1,4 +1,4 @@
-import { User, UserProps } from "../../entities/User";
+import { User, UserProps } from "../../graphql/entities/User";
 import { IUsersRepository } from "../IUsersRepository";
 
 export class UsersRepositoryInMemory implements IUsersRepository{

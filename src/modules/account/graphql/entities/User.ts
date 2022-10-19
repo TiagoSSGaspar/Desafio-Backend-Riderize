@@ -1,7 +1,7 @@
-import { randomUUID } from "node:crypto";
 import "reflect-metadata";
+import { randomUUID } from "node:crypto";
 import { Field, ID, ObjectType } from "type-graphql";
-import { threadId } from "worker_threads";
+
 
 export interface UserProps {
   id?: string;

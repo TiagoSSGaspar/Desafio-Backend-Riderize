@@ -1,0 +1,44 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                  String                @id @default(uuid())
+  name                String
+  email               String                @unique
+  password            String
+  bike_rides BikeRideParticipant[]
+
+  @@map("users")
+}
+
+model BikeRide {
+  id                      String                @id @default(uuid())
+  name                    String
+  start_date              DateTime
+  start_date_registration DateTime              @default(now())
+  end_date_registration   DateTime
+  additional_information  String?
+  start_place             String
+  participants_limit      Int?
+  BikeRideParticipant     BikeRideParticipant[]
+
+  @@map("bike_rides")
+}
+
+model BikeRideParticipant {
+  @@id([user_id])
+
+  bikeRide BikeRide @relation(fields: [ride_id], references: [id])
+  ride_id  String
+
+  user    User   @relation(fields: [user_id], references: [id])
+  user_id String
+
+  @@map("bike_ride_participants")
+}

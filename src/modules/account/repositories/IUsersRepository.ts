@@ -1,9 +1,9 @@
-import { User, UserProps } from "../entities/User"
+import { User, UserProps } from "../graphql/entities/User"
 
 
 export interface IUsersRepository {
-  create(data: UserProps): Promise<User>
-  findById(id: string): Promise<User | undefined>
-  findByEmail(email: string): Promise<User | undefined>
+  create(data: UserProps): Promise<any>
+  findById(id: string): Promise<any>
+  findByEmail(email: string): Promise<any>
 }
 
